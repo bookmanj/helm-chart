@@ -23,7 +23,7 @@ job:
   vars:
     - var:
         key: nats_server
-        value: "nats://outsystems:!outsystems123!@ac2444940272243aebc10f2a39c1a05e-624348180.eu-west-1.elb.amazonaws.com:4222"
+        value: ""
     - var:
         key: nats_subject
         value: platform.my-dotnet-job-status
