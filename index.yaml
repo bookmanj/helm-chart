@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  my-service:
+  - apiVersion: v2
+    appVersion: "1.0"
+    created: "2021-08-03T08:43:59.3951809-05:00"
+    description: A helm chart for my-service example
+    digest: 878c88326d50c57a56305ec2e7043889c5ca339d28d5095f74904b9c5e9fb1c4
+    name: my-service
+    type: application
+    urls:
+    - https://bookmanj.github.io/helm-chart/my-service-0.1.0.tgz
+    version: 0.1.0
+generated: "2021-08-03T08:43:59.3940497-05:00"

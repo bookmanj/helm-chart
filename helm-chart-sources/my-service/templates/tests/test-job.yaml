@@ -1,0 +1,29 @@
+{{- if .Values.job.enabled }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Release.Name }}--my-dotnet-job-test
+  annotations:
+    "helm.sh/hook": test
+    
+spec:
+  ttlSecondsAfterFinished: 100
+  template:
+    metadata:
+      name: "{{.Release.Name}}"
+      labels:
+        release: "{{ .Release.Name }}"
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: {{ .Release.Name }}-{{ .Chart.Name }}-job
+          image: bookmanj/my-dotnet-job:latest
+          imagePullPolicy: IfNotPresent
+          #command: ["python3", "my-py-job.py" ]          
+          env:
+          #setting KEY1 as environment variable in the container,value of KEY1 in container is value1(read from values.yaml)
+          {{- range .Values.job.vars }}
+          - name: {{ .var.key }}
+            value: {{ .var.value }}
+          {{- end }}
+{{- end }}

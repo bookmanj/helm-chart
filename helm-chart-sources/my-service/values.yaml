@@ -1,0 +1,40 @@
+nats:
+  enabled: true
+  auth:
+    enabled: false
+  client:
+    service:
+      type: NodePort
+      nodePort: 30063
+
+replicaCount: 1
+image:
+  repository: bookmanj/my-service
+  tag: "latest"
+service:
+  port: 80
+  type: ClusterIP
+ingress:
+  enabled: true
+  host: my-service.local
+
+job:
+  enabled: true
+  vars:
+    - var:
+        key: nats_server
+        value: "nats://outsystems:!outsystems123!@ac2444940272243aebc10f2a39c1a05e-624348180.eu-west-1.elb.amazonaws.com:4222"
+    - var:
+        key: nats_subject
+        value: platform.my-dotnet-job-status
+    - var:
+        key: nats_start_msg
+        value: "py-job start!"
+    - var:
+        key: nats_status_msg
+        value: "Still working..."
+    - var:
+        key: nats_end_msg
+        value: "py-job end!"
+
+

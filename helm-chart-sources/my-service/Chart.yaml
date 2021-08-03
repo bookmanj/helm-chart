@@ -1,0 +1,11 @@
+apiVersion: v2
+name: my-service
+appVersion: "1.0"
+description: A helm chart for my-service example
+version: 0.1.0
+type: application
+#dependencies:
+#  - name: nats
+#    version: 6.3.x
+#    repository: https://charts.bitnami.com/bitnami
+#    condition: nats.enabled
